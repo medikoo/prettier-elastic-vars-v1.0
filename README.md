@@ -14,6 +14,18 @@ var prettier = require("prettier-elastic-vars");
 prettier.format(src, options);
 ```
 
+#### Integration with VS Code
+
+Install [prettier-eslint](https://marketplace.visualstudio.com/items?itemName=RobinMalfait.prettier-eslint-vscode) extension
+
+Set `prettier-eslint.prettierPath` with correct path to `prettier-elastic-vars`, e.g.:
+
+```json
+...
+"prettier-eslint.prettierPath": "/Users/your-user-name/some-projects/prettier-elastic-vars",
+...
+```
+
 ### Examples
 
 <table>
