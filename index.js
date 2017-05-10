@@ -2,7 +2,7 @@
 
 const copyDeep            = require("es5-ext/object/copy-deep")
     , ensureString        = require("es5-ext/object/validate-stringifiable-value")
-		, normalizeOptions    = require("prettier/src/options").normalize
+    , normalizeOptions    = require("prettier/src/options").normalize
     , { printAstToDoc }   = require("prettier/src/printer")
     , { printDocToDebug } = require("prettier/src/doc-debug")
     , transform           = require("./lib/transform");
@@ -11,7 +11,7 @@ const { parse, printToDoc, printDocToString } = require("prettier").__debug;
 
 const decoratedPrintDocToString = (doc, opts) => printDocToString(transform(copyDeep(doc)), opts);
 
-const format = (text, opts) => decoratedPrintDocToString(printToDoc(text, opts));
+const format = (text, opts) => decoratedPrintDocToString(printToDoc(text, opts), opts);
 
 const formatWithShebang = function (text, opts) {
 	if (!text.startsWith("#!")) return format(text, opts);
@@ -45,7 +45,7 @@ module.exports = {
 
 			return str;
 		},
-    // Doesn't handle shebang for now
+		// Doesn't handle shebang for now
 		formatDoc (doc, opts) {
 			opts = normalizeOptions(opts);
 			const debug = printDocToDebug(doc);
