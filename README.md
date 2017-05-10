@@ -8,7 +8,6 @@
 ### Usage
 
 ```javascript
-// A decorated version of prettier.format
 var prettier = require("prettier-elastic-vars");
 
 prettier.format(src, options);
