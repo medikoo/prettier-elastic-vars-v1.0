@@ -10,6 +10,7 @@
 ```javascript
 var prettier = require("prettier-elastic-vars");
 
+// Same as with original prettier
 prettier.format(src, options);
 ```
 
