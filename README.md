@@ -1,5 +1,5 @@
 # prettier-elastic-vars
-## Prettier decorator that applies alternative formatting to var/let/const declarations
+## [Prettier](https://github.com/prettier/prettier) with alternative formatting for `var`, `let` and `const` declarations
 
 ### Installation
 
@@ -9,9 +9,9 @@
 
 ```javascript
 // A decorated version of prettier.format
-var format = require("prettier-elastic-vars");
+var prettier = require("prettier-elastic-vars");
 
-format(src, options);
+prettier.format(src, options);
 ```
 
 ### Examples
