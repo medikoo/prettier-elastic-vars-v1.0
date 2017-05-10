@@ -170,6 +170,18 @@ var { miszka, elo } = require("foo")
 	});
 });
 
+test("nested blocks", (t) => {
+	const text = `while (true) {
+	if (foo) {
+		var foo           = require("marko")
+		  , markoEloBamba = require("marko-elo-bamba");
+	}
+}\n`;
+
+	t.equal(format(text, { useTabs: true }), text);
+	t.end();
+});
+
 test("mocks", (t) => {
 
 	test("She bang", (t) => {
