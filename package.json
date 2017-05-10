@@ -1,0 +1,35 @@
+{
+  "name": "prettier-elastic-vars",
+  "version": "0.0.0",
+  "description": "Prettier customizations that provide fancy formatting to var declarations",
+  "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
+  "keywords": [
+    "prettier"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/medikoo/prettier-elastic-vars.git"
+  },
+  "dependencies": {
+    "es5-ext": "^0.10.16",
+    "prettier": "~1.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.18",
+    "eslint-config-medikoo": "^1.10",
+    "istanbul": "^0.4.5",
+    "tape": "^4.6.3",
+    "tape-index": "1"
+  },
+  "eslintConfig": {
+    "extends": "medikoo",
+    "root": true
+  },
+  "scripts": {
+    "coverage": "tape-index && istanbul cover test.index.js",
+    "check-coverage": "npm run coverage && istanbul check-coverage --statements -4 --branches -4 --function 100 --lines 100",
+    "lint": "eslint --ignore-path=.gitignore .",
+    "test": "tape-index && node test.index.js"
+  },
+  "license": "MIT"
+}
