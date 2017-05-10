@@ -4,7 +4,11 @@
 
 const test                       = require("tape")
     , normalizeOptions           = require("prettier/src/options").normalize
-    , { format, check, __debug } = require("../");
+    , {
+ format
+	    , check
+	    , __debug
+} = require("../");
 
 test("var declarations", (t) => {
 	t.test("Single", (t) => {
@@ -31,7 +35,6 @@ test("var declarations", (t) => {
 	});
 	t.end();
 });
-
 
 test("let declarations", (t) => {
 	t.test("Few short", (t) => {
@@ -74,9 +77,7 @@ test("const declarations", (t) => {
 });
 
 test("Requires", (t) => {
-
 	t.test("var", (t) => {
-
 		t.test("Single", (t) => {
 			const src = "var miszka = require(\"foo\");\n";
 
@@ -87,9 +88,12 @@ test("Requires", (t) => {
 		t.test("Few short", (t) => {
 			const src = "var miszka = require(\"foo\"), foo = require(\"marko\");\n";
 
-			t.equal(format(src), `var miszka = require("foo")
+			t.equal(
+				format(src),
+				`var miszka = require("foo")
   , foo    = require("marko");
-`);
+`
+			);
 			t.end();
 		});
 
@@ -99,9 +103,12 @@ var miszka = require("foo")
   , foo = require("marko");
 `;
 
-			t.equal(format(src), `var miszka = require("foo")
+			t.equal(
+				format(src),
+				`var miszka = require("foo")
   , foo    = require("marko");
-`);
+`
+			);
 			t.end();
 		});
 
@@ -112,17 +119,19 @@ var miszka = require("foo")
   , markoEloBamba = require("marko-elo-bamba");
 `;
 
-			t.equal(format(src), `var miszka        = require("foo")
+			t.equal(
+				format(src),
+				`var miszka        = require("foo")
   , foo           = require("marko")
   , markoEloBamba = require("marko-elo-bamba");
-`);
+`
+			);
 			t.end();
 		});
 		t.end();
 	});
 
 	t.test("const", (t) => {
-
 		t.test("Single", (t) => {
 			const src = "const miszka = require(\"foo\");\n";
 
@@ -133,9 +142,12 @@ var miszka = require("foo")
 		t.test("Few short", (t) => {
 			const src = "const miszka = require(\"foo\"), foo = require(\"marko\");\n";
 
-			t.equal(format(src), `const miszka = require("foo")
+			t.equal(
+				format(src),
+				`const miszka = require("foo")
     , foo    = require("marko");
-`);
+`
+			);
 			t.end();
 		});
 
@@ -146,10 +158,13 @@ const miszka = require("foo")
   , markoEloBamba = require("marko-elo-bamba");
 `;
 
-			t.equal(format(src), `const miszka        = require("foo")
+			t.equal(
+				format(src),
+				`const miszka        = require("foo")
     , foo           = require("marko")
     , markoEloBamba = require("marko-elo-bamba");
-`);
+`
+			);
 			t.end();
 		});
 		t.end();
@@ -162,15 +177,18 @@ var { miszka, elo } = require("foo")
   , markoEloBamba = require("marko-elo-bamba");
 `;
 
-		t.equal(format(src), `var { miszka, elo } = require("foo")
+		t.equal(
+			format(src),
+			`var { miszka, elo } = require("foo")
   , foo             = require("marko")
   , markoEloBamba   = require("marko-elo-bamba");
-`);
+`
+		);
 		t.end();
 	});
 });
 
-test("nested blocks", (t) => {
+test("Nested blocks", (t) => {
 	const text = `while (true) {
 	if (foo) {
 		var foo           = require("marko")
@@ -183,7 +201,6 @@ test("nested blocks", (t) => {
 });
 
 test("mocks", (t) => {
-
 	test("She bang", (t) => {
 		const src = `#!/usr/bin/env node
 
