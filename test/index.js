@@ -171,7 +171,7 @@ const miszka = require("foo")
 	});
 
 	t.test("Destructuring", (t) => {
-		const src = `
+		let src = `
 var { miszka, elo } = require("foo")
   , foo = require("marko")
   , markoEloBamba = require("marko-elo-bamba");
@@ -182,6 +182,24 @@ var { miszka, elo } = require("foo")
 			`var { miszka, elo } = require("foo")
   , foo             = require("marko")
   , markoEloBamba   = require("marko-elo-bamba");
+`
+		);
+
+		src = `
+const test                       = require("tape")
+    , normalizeOptions           = require("prettier/src/options").normalize
+    , {
+ format
+	    , check
+	    , __debug
+} = require("../");
+`;
+
+		t.equal(
+			format(src),
+			`const test                       = require("tape")
+    , normalizeOptions           = require("prettier/src/options").normalize
+    , { format, check, __debug } = require("../");
 `
 		);
 		t.end();
