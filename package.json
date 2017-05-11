@@ -1,6 +1,6 @@
 {
   "name": "prettier-elastic-vars",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Prettier customizations that provide fancy formatting to var declarations",
   "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
   "keywords": [
