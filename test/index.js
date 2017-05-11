@@ -4,11 +4,7 @@
 
 const test                       = require("tape")
     , normalizeOptions           = require("prettier/src/options").normalize
-    , {
- format
-	    , check
-	    , __debug
-} = require("../");
+    , { format, check, __debug } = require("../");
 
 test("var declarations", (t) => {
 	t.test("Single", (t) => {
