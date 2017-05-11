@@ -200,6 +200,18 @@ test("Nested blocks", (t) => {
 	t.end();
 });
 
+test("Nested lists", (t) => {
+	const text = `while (true) {
+	if (foo) {
+		var foo           = require("marko")
+		  , markoEloBamba = new Set(["foo", "bar"]);
+	}
+}\n`;
+
+	t.equal(format(text, { useTabs: true }), text);
+	t.end();
+});
+
 test("mocks", (t) => {
 	test("She bang", (t) => {
 		const src = `#!/usr/bin/env node
