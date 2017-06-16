@@ -6,21 +6,21 @@ const test                       = require("tape")
     , normalizeOptions           = require("prettier/src/options").normalize
     , { format, check, __debug } = require("../");
 
-test("var declarations", (t) => {
-	t.test("Single", (t) => {
+test("var declarations", t => {
+	t.test("Single", t => {
 		const text = "var x = \"foo\";\n";
 
 		t.equal(format(text), text);
 		t.end();
 	});
 
-	t.test("Few short", (t) => {
+	t.test("Few short", t => {
 		const text = "var x = \"foo\", y = \"bar\";\n";
 
 		t.equal(format(text), text);
 		t.end();
 	});
-	test("Many long", (t) => {
+	test("Many long", t => {
 		const text = `var razrazrazraz = "foofoofoo"
   , dwadwadwadwa = "bardwadwa"
   , trzytrzytrzytrzy = "trzytrzytrzy";
@@ -32,15 +32,15 @@ test("var declarations", (t) => {
 	t.end();
 });
 
-test("let declarations", (t) => {
-	t.test("Few short", (t) => {
+test("let declarations", t => {
+	t.test("Few short", t => {
 		const src = "let x = \"foo\", y = \"bar\";\n";
 
 		t.equal(format(src), src);
 		t.end();
 	});
 
-	t.test("Many long", (t) => {
+	t.test("Many long", t => {
 		const src = `let razrazrazraz = "foofoofoo"
   , dwadwadwadwa = "bardwadwa"
   , trzytrzytrzytrzy = "trzytrzytrzy";
@@ -52,15 +52,15 @@ test("let declarations", (t) => {
 	t.end();
 });
 
-test("const declarations", (t) => {
-	t.test("Many const short", (t) => {
+test("const declarations", t => {
+	t.test("Many const short", t => {
 		const src = "const x = \"foo\", y = \"bar\";\n";
 
 		t.equal(format(src), src);
 		t.end();
 	});
 
-	t.test("Many const long", (t) => {
+	t.test("Many const long", t => {
 		const src = `const razrazrazraz = "foofoofoo"
     , dwadwadwadwa = "bardwadwa"
     , trzytrzytrzytrzy = "trzytrzytrzy";
@@ -72,16 +72,16 @@ test("const declarations", (t) => {
 	t.end();
 });
 
-test("Requires", (t) => {
-	t.test("var", (t) => {
-		t.test("Single", (t) => {
+test("Requires", t => {
+	t.test("var", t => {
+		t.test("Single", t => {
 			const src = "var miszka = require(\"foo\");\n";
 
 			t.equal(format(src), src);
 			t.end();
 		});
 
-		t.test("Few short", (t) => {
+		t.test("Few short", t => {
 			const src = "var miszka = require(\"foo\"), foo = require(\"marko\");\n";
 
 			t.equal(
@@ -93,7 +93,7 @@ test("Requires", (t) => {
 			t.end();
 		});
 
-		t.test("Few short (multiline input)", (t) => {
+		t.test("Few short (multiline input)", t => {
 			const src = `
 var miszka = require("foo")
   , foo = require("marko");
@@ -108,7 +108,7 @@ var miszka = require("foo")
 			t.end();
 		});
 
-		t.test("Long", (t) => {
+		t.test("Long", t => {
 			const src = `
 var miszka = require("foo")
   , foo = require("marko")
@@ -127,15 +127,15 @@ var miszka = require("foo")
 		t.end();
 	});
 
-	t.test("const", (t) => {
-		t.test("Single", (t) => {
+	t.test("const", t => {
+		t.test("Single", t => {
 			const src = "const miszka = require(\"foo\");\n";
 
 			t.equal(format(src), src);
 			t.end();
 		});
 
-		t.test("Few short", (t) => {
+		t.test("Few short", t => {
 			const src = "const miszka = require(\"foo\"), foo = require(\"marko\");\n";
 
 			t.equal(
@@ -147,7 +147,7 @@ var miszka = require("foo")
 			t.end();
 		});
 
-		t.test("Long", (t) => {
+		t.test("Long", t => {
 			const src = `
 const miszka = require("foo")
   , foo = require("marko")
@@ -166,7 +166,7 @@ const miszka = require("foo")
 		t.end();
 	});
 
-	t.test("Destructuring", (t) => {
+	t.test("Destructuring", t => {
 		let src = `
 var { miszka, elo } = require("foo")
   , foo = require("marko")
@@ -202,7 +202,7 @@ const test                       = require("tape")
 	});
 });
 
-test("Nested blocks", (t) => {
+test("Nested blocks", t => {
 	const text = `while (true) {
 	if (foo) {
 		var foo           = require("marko")
@@ -214,7 +214,7 @@ test("Nested blocks", (t) => {
 	t.end();
 });
 
-test("Nested lists", (t) => {
+test("Nested lists", t => {
 	const text = `while (true) {
 	if (foo) {
 		var foo           = require("marko")
@@ -226,8 +226,8 @@ test("Nested lists", (t) => {
 	t.end();
 });
 
-test("mocks", (t) => {
-	test("She bang", (t) => {
+test("mocks", t => {
+	test("She bang", t => {
 		const src = `#!/usr/bin/env node
 
 var x = "foo";
@@ -237,14 +237,14 @@ var x = "foo";
 		t.end();
 	});
 
-	test("Check", (t) => {
+	test("Check", t => {
 		t.equal(check("var x = \"foo\";\n"), true);
 		t.equal(check("var x =  \"foo\";\n"), false);
 		t.equal(check("fefe(f"), false);
 		t.end();
 	});
 
-	test("formatAST", (t) => {
+	test("formatAST", t => {
 		const text = "var x = \"foo\";\n", opts = normalizeOptions({});
 
 		const ast = __debug.parse(text, opts);
@@ -257,7 +257,7 @@ var x = "foo";
 		t.end();
 	});
 
-	test("formatDoc", (t) => {
+	test("formatDoc", t => {
 		const src = `var razrazrazraz = "foofoofoo"
   , dwadwadwadwa = "bardwadwa"
   , trzytrzytrzytrzy = "trzytrzytrzy";

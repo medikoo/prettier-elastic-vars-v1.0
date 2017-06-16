@@ -5,7 +5,7 @@
 const test      = require("tape")
     , transform = require("../../lib/transform");
 
-test("Main", (t) => {
+test("Main", t => {
 	const doc = { type: "concat", parts: [] };
 
 	t.equal(transform(doc), doc);
