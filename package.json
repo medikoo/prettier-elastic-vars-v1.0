@@ -11,16 +11,16 @@
     "url": "git://github.com/medikoo/prettier-elastic-vars.git"
   },
   "dependencies": {
-    "es5-ext": "^0.10.16",
+    "es5-ext": "^0.10.23",
     "prettier": "~1.3.1",
-    "proxyquire": "^1.7.11"
+    "proxyquire": "^1.8"
   },
   "devDependencies": {
-    "eslint": "^3.18",
-    "eslint-config-medikoo": "^1.10",
+    "eslint": "4",
+    "eslint-config-medikoo": "^1.18",
     "istanbul": "^0.4.5",
     "tape": "^4.6.3",
-    "tape-index": "1"
+    "tape-index": "^1.1"
   },
   "eslintConfig": {
     "extends": "medikoo",
