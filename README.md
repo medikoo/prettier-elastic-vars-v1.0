@@ -1,7 +1,7 @@
 # prettier-elastic-vars-v1.0
 
-__NOTICE: Initial version of `prettier-elastic-vars`, configured internally as _doc_ external decorator.
-Deprecated now in favor of new version which is direct fork of prettier.__
+__NOTICE: It's initial version of `prettier-elastic-vars` projest, configured internally as a _doc_ external decorator.  
+Deprecated now in favor of [new version](https://github.com/medikoo/prettier-elastic-vars) which is direct fork of  a prettier.__
 
 ## [Prettier](https://github.com/prettier/prettier) with alternative formatting for `var`, `let` and `const` declarations
 
